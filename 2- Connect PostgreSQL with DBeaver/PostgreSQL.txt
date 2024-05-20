@@ -1,0 +1,3 @@
+Postgre sql e DBeaver ile bağlanmak için öncelikle
+1- docker pull postgres
+2- docker run --name new-postgres -e POSTGRES_USER=myuser -e POSTGRES_PASSWORD=mypassword -e POSTGRES_DB=mydb -p 5432:5432 -d postgres

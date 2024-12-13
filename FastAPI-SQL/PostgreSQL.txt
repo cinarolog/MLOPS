@@ -1,0 +1,35 @@
+Postgre sql e DBeaver ile bağlanmak için öncelikle
+1- docker pull postgres
+2- docker run --name new-postgres -e POSTGRES_USER=myuser -e POSTGRES_PASSWORD=mypassword -e POSTGRES_DB=mydb -p 5432:5432 -d postgres
+
+
+
+
+3-tablo olusturmak için,
+CREATE TABLE table1 (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    phone VARCHAR(50) NOT NULL
+);
+
+4- data eklemek için,
+-- Rastgele veri eklemek için gerekli fonksiyonları yükleyin
+-- pgcrypto extension'u yükleyerek rastgele veriler oluşturabilirsiniz
+CREATE EXTENSION IF NOT EXISTS pgcrypto;
+
+-- Rastgele 50 veri eklemek için INSERT komutu
+INSERT INTO table1 (name, email, phone)
+SELECT
+    'Name_' || gen_random_uuid(),  -- Rastgele bir isim
+    'user' || generate_series(1, 50) || '@example.com',  -- Rastgele bir e-posta
+    '555-01' || LPAD((generate_series(1, 50) % 100)::text, 3, '0')  -- Rastgele bir telefon numarası
+FROM generate_series(1, 50);
+
+5- çalışmazsa ,
+docker exec -it new-postgres psql -U myuser -d mydb
+
+6-
+\dt
+
+ondan sonra 3 ile 4 ü tekrar yapıstır

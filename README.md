@@ -105,7 +105,7 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 For any inquiries or feedback, feel free to reach out:
 - **Author:** Muhammet ÇINAR
-- **Email:** [YourEmail@example.com]
+- **Email:** [mhmmtcnr81@gmail.com]
 
 ---
 
